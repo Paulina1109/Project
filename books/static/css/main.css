@@ -1,0 +1,45 @@
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    margin: auto;
+}
+
+#first {
+    background-color: #bbbbbb;
+    background: no-repeat;
+    background-image: url(../img/bookandcoffee.jpg);
+    border-radius:20px;
+    width: 60%;
+    height: 800px;
+    background-size: cover;
+    background-position: center;
+}
+
+h1 {
+    background-color: seashell;
+    padding: 20px;
+}
+
+#second {
+    text-align: center;
+    width: 40%;
+}
+
+a {
+    color: black;
+}
+
+.dropdown {
+    display: none;
+    list-style: none;
+}
+.navbar:hover .dropdown {
+    display: block;
+    position: absolute;
+    padding: .8rem;
+    margin-top: 40px;
+    margin-left: 185px;
+    height: 25px;
+    width: 220px;
+}

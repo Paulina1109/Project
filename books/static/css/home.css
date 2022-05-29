@@ -1,0 +1,83 @@
+.main {
+    border-radius: 5px;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: center;
+    vertical-align: middle;
+    color: black;
+}
+
+.picture {
+    background-image: url(../img/booksbetterthanpeople.jpg);
+    border-radius: 20px;
+    width: 400px;
+    height: 400px;
+    background-position: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+.articles {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-right: 100px;
+    margin-left: 100px;
+    font-size: 17px;
+    line-height: 26px;
+    text-align: justify;
+}
+
+/* Style the navigation bar */
+.navbar {
+    width: 100%;
+    background-color: seashell;
+    overflow: auto;
+    display: block;
+}
+
+/* Navbar links */
+.navbar a {
+    float: left;
+    text-align: center;
+    padding: 20px;
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Navbar links on mouse-over */
+.navbar a:hover {
+    background-color: #bbbbbb;
+}
+
+/* Current/active navbar link */
+.active {
+    background-color: silver;
+}
+
+/* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
+@media screen and (max-width: 500px) {
+    .navbar a {
+        float: none;
+        display: block;
+    }
+}
+
+.dropdown {
+    display: none;
+    list-style: none;
+}
+.navbar:hover .dropdown {
+    display: block;
+    position: absolute;
+    padding: .8rem;
+    margin-top: 40px;
+    margin-left: 185px;
+    height: 25px;
+    width: 220px;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href=/static/css/catalog.css?{% now "U" %}">
+    <title>Moja strona</title>
+</head>
+<body>
+
+<div class="flex-container">
+    <div id="first">
+        <h1>Welcome on our website !</h1>
+    </div>
+
+<div class="navbar">
+    <a href="/home"><i class="fa fa-fw fa-home"></i> Home </a>
+    <a class="active" href="/catalog"><i class="fa fa-fw fa-search"></i> Catalog </a>
+    <a href="/recommendation"><i class="fa fa-fw fa-envelope"></i> Recommendations </a>
+    <div class="dropdown">
+        <ul>
+            <a href="/Add-recommendation">Add recommendation</a>
+        </ul>
+    </div>
+    <a href="/contact"><i class="fa fa-fw fa-user"></i> Contact </a>
+    <a href="/list"> My list </a>
+</div>
+
+<table>
+
+  <tr>
+    <th>Title </th>
+    <th>Genre </th>
+  </tr>
+
+{% for i in genre %}
+    <tr>
+    <td> {{ i.title }} </td>
+    <td> {{ i.genre }} </td>
+    </tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>

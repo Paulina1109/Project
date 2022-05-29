@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href=/static/css/recommendation.css?{% now "U" %}">
+    <title>Moja strona</title>
+</head>
+<body>
+<div class="flex-container">
+    <div id="first">
+        <h1>Welcome on our website !</h1>
+    </div>
+
+<div class="navbar">
+    <a href="/home"><i class="fa fa-fw fa-home"></i> Home </a>
+    <a href="/catalog"><i class="fa fa-fw fa-search"></i> Catalog </a>
+    <a class="active" href="/recommendation"><i class="fa fa-fw fa-envelope"></i> Recommendations </a>
+    <div class="dropdown">
+        <ul>
+            <a href="/Add-recommendation">Add recommendation</a>
+        </ul>
+    </div>
+    <a href="/contact"><i class="fa fa-fw fa-user"></i> Contact </a>
+    <a href="/list"> My list </a>
+</div>
+</div>
+
+
+<div class="card">
+
+    <form action="" method="POST">
+      {% csrf_token %}
+
+        <label for="rate">Rate</label>
+        <select id="rate" name="rate">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" placeholder="Write something.." style="height:200px"></textarea>
+
+        <label for="book">Book</label>
+        <input type="text" id="book" name="book" placeholder="The book title..">
+
+
+      <button type="submit">Add recommendation</button>
+    </form>
+  </div>
+
+</body>
+</html>
+
