@@ -25,7 +25,23 @@
 </div>
 </div>
 
+<table>
 
+  <tr>
+    <th>Rate </th>
+    <th>Description </th>
+    <th>Book </th>
+  </tr>
+
+{% for i in book %}
+    <tr>
+    <td> {{ i.rate }} </td>
+    <td> {{ i.description }} </td>
+    <td> {{ i.book }} </td>
+    </tr>
+{% endfor %}
+
+</table>
 
 </body>
 </html>

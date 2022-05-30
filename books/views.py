@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponse
 from .models import Genre, Recommendation
+from .forms import RecommendationForm
 
 class MainPage(View):
     def get(self, request):
@@ -20,7 +21,8 @@ class HomeView(View):
 
 class RecommendationView(View):
     def get(self, request):
-        return render(request, 'recommendation.html')
+        book = Recommendation.objects.all()
+        return render(request, 'recommendation.html', context={"book": book})
 
 class CatalogView(View):
     def get(self, request):
@@ -30,10 +32,14 @@ class CatalogView(View):
 
 class AddRecommendationView(View):
     def get(self, request):
-        return render(request, 'add-recommendation.html')
+        form = RecommendationForm()
+        return render(request, 'add-recommendation.html', {'form': form})
     def post(self, request):
-        rate = request.POST.get("rate")
-        description = request.POST.get("description")
-        book = request.POST.get("book")
-        Recommendation.objects.create(rate= rate, description= description, book= book)
-        return redirect("/recommendation")
+        form = RecommendationForm(request.POST)
+        if form.is_valid():
+            # book = form.cleaned_data['book']
+            # rate = form.cleaned_data['rate']
+            # description = form.cleaned_data['description']
+            form.save(commit=True)
+        return HttpResponse("Thank you for your recommendation!")
+

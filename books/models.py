@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Genre(models.Model):
     title = models.CharField(max_length=64, primary_key=True)
     genre = models.CharField(max_length=32)

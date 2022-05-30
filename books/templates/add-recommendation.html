@@ -31,20 +31,21 @@
     <form action="" method="POST">
       {% csrf_token %}
 
-        <label for="rate">Rate</label>
-        <select id="rate" name="rate">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-
-        <label for="description">Description</label>
-        <textarea id="description" name="description" placeholder="Write something.." style="height:200px"></textarea>
-
-        <label for="book">Book</label>
-        <input type="text" id="book" name="book" placeholder="The book title..">
+         {{ form.as_p }}
+{#        <label for="rate">Rate</label>#}
+{#        <select id="rate" name="rate">#}
+{#            <option value="1">1</option>#}
+{#            <option value="2">2</option>#}
+{#            <option value="3">3</option>#}
+{#            <option value="4">4</option>#}
+{#            <option value="5">5</option>#}
+{#        </select>#}
+{##}
+{#        <label for="description">Description</label>#}
+{#        <textarea id="description" name="description" placeholder="Write something.." style="height:200px"></textarea>#}
+{##}
+{#        <label for="book">Book</label>#}
+{#        <input type="text" id="book" name="book" placeholder="The book title..">#}
 
 
       <button type="submit">Add recommendation</button>
