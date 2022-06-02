@@ -17,11 +17,11 @@
     <a class="active" href="/recommendation"><i class="fa fa-fw fa-envelope"></i> Recommendations </a>
     <div class="dropdown">
         <ul>
-            <a href="/Add-recommendation">Add recommendation</a>
+            <a href="/add-recommendation">Add recommendation</a>
         </ul>
     </div>
     <a href="/contact"><i class="fa fa-fw fa-user"></i> Contact </a>
-    <a href="/list"> My list </a>
+    <a href="/my-list/"> My list </a>
 </div>
 </div>
 
@@ -29,9 +29,10 @@
 <div class="card">
 
     <form action="" method="POST">
-      {% csrf_token %}
 
-         {{ form.as_p }}
+      {% csrf_token %}
+        {{ form.as_p }}
+
 {#        <label for="rate">Rate</label>#}
 {#        <select id="rate" name="rate">#}
 {#            <option value="1">1</option>#}
@@ -49,6 +50,7 @@
 
 
       <button type="submit">Add recommendation</button>
+
     </form>
   </div>
 

@@ -11,11 +11,17 @@ class Book(models.Model):
     author = models.CharField(max_length=32)
     genre = models.ManyToManyField(Genre)
 
+    def __str__(self):
+        return self.title + " " + self.author
+
 
 class Recommendation(models.Model):
     rate = models.FloatField()
     description = models.TextField()
     book = models.ForeignKey('Book', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.rate + " " + self.description
 
 
 class User(models.Model):
