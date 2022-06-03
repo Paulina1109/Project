@@ -1,5 +1,5 @@
 from django import forms
-from .models import Recommendation, Book, User
+from .models import Recommendation, Book, UserList
 from django.contrib.auth.models import User
 
 
@@ -58,7 +58,7 @@ class UserCreationForm(forms.ModelForm):
         return user
 
 
-class UserForm(forms.ModelForm):
+class UserListForm(forms.ModelForm):
     class Meta:
-        model = User
+        model = UserList
         fields = '__all__'

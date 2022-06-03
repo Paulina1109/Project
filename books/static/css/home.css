@@ -72,7 +72,7 @@
     display: none;
     list-style: none;
 }
-.navbar:hover .dropdown {
+span:hover .dropdown {
     display: block;
     position: absolute;
     padding: .8rem;

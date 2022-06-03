@@ -21,13 +21,15 @@ class Recommendation(models.Model):
     book = models.ForeignKey('Book', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.rate + " " + self.description
+        return self.rate + self.description
 
 
-class User(models.Model):
-    rate = models.FloatField()
-    comment = models.TextField
+class UserList(models.Model):
+    description = models.TextField(default=None)
     book = models.ManyToManyField(Book)
+
+    def __str__(self):
+        return self.comment
 
 
 class TopTen(models.Model):

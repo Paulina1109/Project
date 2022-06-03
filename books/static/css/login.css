@@ -39,7 +39,7 @@
     display: none;
     list-style: none;
 }
-.navbar:hover .dropdown {
+span:hover .dropdown {
     display: block;
     position: absolute;
     padding: .8rem;
@@ -47,4 +47,12 @@
     margin-left: 185px;
     height: 25px;
     width: 220px;
+}
+
+h2 {
+    text-align: center;
+}
+
+form {
+    text-align: center;
 }

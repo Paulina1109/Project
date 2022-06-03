@@ -42,8 +42,12 @@ class CatalogView(View):
 
 class AddRecommendationView(View):
     def get(self, request):
-        form = RecommendationForm()
-        return render(request, 'add-recommendation.html', {'form': form})
+        user = request.user
+        if not user.is_authenticated:
+            return redirect('/login')
+        else:
+            form = RecommendationForm()
+            return render(request, 'add-recommendation.html', {'form': form})
     def post(self, request):
         form = RecommendationForm(request.POST)
         if form.is_valid():
@@ -84,7 +88,6 @@ class AddUserView(View):
     def get(self, request):
         form = UserCreationForm()
         return render(request, "add_user_form.html", {"form": form})
-
     def post(self, request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -92,10 +95,16 @@ class AddUserView(View):
             return HttpResponseRedirect('/thanks')
         return render(request, "add_user_form.html", {"form": form})
 
-class MyListView(View):
+class UserListView(View):
     def get(self, request):
-        form = UserForm()
-        if not request.user.is_authenticated:
+        user = request.user
+        if not user.is_authenticated:
             return redirect('/login')
         else:
+            form = UserListForm()
             return render(request, "my-list.html", {"form": form})
+    def post(self,request):
+        form = UserListForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+        return HttpResponse("Your choose has been saved!")

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Logowanie</h2>
+    <h2>Login is required if you want to add recommendation or check your list of books</h2>
         <form action="" method="post">
             {% csrf_token %}
             {{ form.as_p }}
