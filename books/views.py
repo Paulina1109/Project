@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Genre
+from .models import Genre, TopTen
 from .forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
@@ -109,3 +109,9 @@ class UserListView(View):
         if form.is_valid():
             form.save(commit=True)
         return HttpResponse("Your choose has been saved!")
+
+class TopTenView(View):
+    def get(self, request):
+        items = TopTen.objects.all()
+        return render(request, "top-ten.html", {"items" : items})
+
