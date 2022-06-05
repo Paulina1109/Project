@@ -21,7 +21,7 @@ class Recommendation(models.Model):
     book = models.ForeignKey('Book', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.rate + self.description
+        return str(self.rate) + self.description
 
 
 class UserList(models.Model):
@@ -29,7 +29,7 @@ class UserList(models.Model):
     book = models.ManyToManyField(Book)
 
     def __str__(self):
-        return self.comment
+        return self.description + self.book
 
 
 class TopTen(models.Model):

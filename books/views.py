@@ -102,7 +102,8 @@ class UserListView(View):
             return redirect('/login')
         else:
             form = UserListForm()
-            return render(request, "my-list.html", {"form": form})
+            userlist = UserList.objects.all()
+            return render(request, "my-list.html", {"userlist": userlist, "form": form})
     def post(self,request):
         form = UserListForm(request.POST)
         if form.is_valid():
