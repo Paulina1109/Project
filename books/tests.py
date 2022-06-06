@@ -1,6 +1,16 @@
 from django.test import TestCase
 from .models import *
 
+
+class SimpleTest(TestCase):
+    def test_details(self):
+        response = self.client.get('/my-list/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_index(self):
+        response = self.client.get('/add-recommendation/')
+        self.assertEqual(response.status_code, 200)
+
 class GenreModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
