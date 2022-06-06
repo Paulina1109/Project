@@ -6,26 +6,38 @@ from .forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
 
+
+# Main page of the application
 class MainPage(View):
     def get(self, request):
         return render(request, 'main.html')
 
-class ContactView(View):
-    def get(self, request):
-        return render(request, 'contact.html')
-    def post(self, request):
-        name = request.POST.get("firstname")
-        return redirect("/main")
 
+# Home view with all the functionalities to enter
 class HomeView(View):
     def get(self, request):
         return render(request, 'home.html')
 
+# Contact form to sent the request
+class ContactView(View):
+    def get(self, request):
+        return render(request, 'contact.html')
+    def post(self, request):
+        # name = request.POST.get("fname")
+        # surname = request.POST.get("lname")
+        # country = request.POST.get("country")
+        # subject = request.POST.get("subject")
+        return redirect('/main')
+
+
+# Recommendation view to check the books that are recommended by the user who were logged in
 class RecommendationView(View):
     def get(self, request):
         book = Recommendation.objects.all()
         return render(request, 'recommendation.html', context={"book": book})
 
+
+# Recommendation view available to all users to check the database of books
 class CatalogView(View):
     def get(self, request):
         genre = Genre.objects.all()
@@ -40,6 +52,8 @@ class CatalogView(View):
             form.save(commit=True)
         return HttpResponse("Thank you for your recommendation!")
 
+
+# Add_Recommendation View for users who are logged in, to recommend books from database
 class AddRecommendationView(View):
     def get(self, request):
         user = request.user
@@ -57,7 +71,7 @@ class AddRecommendationView(View):
             form.save(commit=True)
         return HttpResponse("Thank you for your recommendation!")
 
-
+# Login view for users wanted to access Add Recommendation or My View page
 class LoginView(View):
     def get(self, request):
         form = LoginForm()
@@ -79,11 +93,13 @@ class LoginView(View):
                 return HttpResponseRedirect('/add-user')
         return render(request, 'login_form.html', {'form': form})
 
+# Once enter /logout the user is logged out from app
 class LogoutView(View):
     def get(self, request):
         logout(request)
         return HttpResponseRedirect('/main')
 
+# If user is not in database, the web is redirected to create user
 class AddUserView(View):
     def get(self, request):
         form = UserCreationForm()
@@ -95,6 +111,8 @@ class AddUserView(View):
             return HttpResponseRedirect('/thanks')
         return render(request, "add_user_form.html", {"form": form})
 
+
+#My list view for users logged in
 class UserListView(View):
     def get(self, request):
         user = request.user
@@ -108,8 +126,9 @@ class UserListView(View):
         form = UserListForm(request.POST)
         if form.is_valid():
             form.save(commit=True)
-        return HttpResponse("Your choose has been saved!")
+        return HttpResponse("Your choice has been saved!")
 
+#View for Top10 books recommended by web creator
 class TopTenView(View):
     def get(self, request):
         items = TopTen.objects.all()
