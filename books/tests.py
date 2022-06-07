@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .models import *
+from django import urls
 
 
 class SimpleTest(TestCase):
@@ -31,5 +32,11 @@ class GenreModelTest(TestCase):
         title = Genre.objects.get(id=1)
         max_length = title._meta.get_field('title').max_length
         self.assertEqual(max_length, 64)
+
+
+def test_side(client):
+    url = urls.reverse('recommendation')
+    resp = client.get(url)
+    assert resp.status_code == 200
 
 
