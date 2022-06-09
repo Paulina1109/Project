@@ -23,11 +23,11 @@ class ContactView(View):
     def get(self, request):
         return render(request, 'contact.html')
     def post(self, request):
-        # name = request.POST.get("fname")
-        # surname = request.POST.get("lname")
-        # country = request.POST.get("country")
-        # subject = request.POST.get("subject")
-        return redirect('/main')
+        firstname = request.POST["firstname"]
+        lastname = request.POST["lastname"]
+        country = request.POST["country"]
+        subject = request.POST["subject"]
+        return render(request, 'contact.html', {"firstname": firstname})
 
 
 # Recommendation view to check the books that are recommended by the user who were logged in

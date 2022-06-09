@@ -28,8 +28,13 @@
     <a href="/my-list/"> My list </a>
 </div>
 
+
+    <h2> {{ firstname }} your message has been passed </h2>
+
 <div class="container">
-    <form action="/main">
+    <form action=" " method="post">
+    {%  csrf_token %}
+
 
         <label for="fname">First Name</label>
         <input type="text" id="fname" name="firstname" placeholder="Your name..">
